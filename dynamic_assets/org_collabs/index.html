@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolling Gallery</title>
+  <style>
+    .gallery-container {
+  overflow-x: auto;
+  white-space: nowrap;   /* horizontal scrolling */
+  padding: 20px 40px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.gallery-item {
+  display: inline-block; /* horizontal flow */
+  width: 200px;
+  height: 180px;
+  margin-right: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;    /* for vertical centering */
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.gallery-item img {
+  width: 95%;            /* slightly smaller for hover scaling */
+  height: auto;
+  position: absolute;    /* center vertically */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+  transform: translate(-50%, -50%) scale(1.05); /* hover zoom keeps centering */
+}
+  </style>
+</head>
+<body>
+
+<div class="gallery-container" id="gallery"></div>
+
+<script>
+  // --- ADD YOUR IMAGES AND LINKS HERE ---
+  const items = [
+    {
+      image: "https://storage.googleapis.com/crowdnews-media-library/066fab5c-b377-49e1-a086-a64175c7ab75.png",
+      link: "https://anishg2000.wixsite.com/portfolio/post/moises-ai-integration-workshop"
+    },
+    {
+      image: "https://soundskrit.ca/wp-content/uploads/2022/12/Soundskrit-high-resolution-Logo.png",
+      link: "https://anishg2000.wixsite.com/portfolio/post/soundskrit-firefly-prototype-microphone-testing"
+    },
+    {
+      image: "https://d3hk6w1rfu80ox.cloudfront.net/media/uploads/listings/1L5jmoQxotgo.png",
+      link: "https://anishg2000.wixsite.com/portfolio/post/frostverb-plug-in-gui"
+    },{
+      image: "https://aes2.org/wp-content/uploads/2023/04/AES-Logo-R-768x341.png.webp",
+      link: "https://anishg2000.wixsite.com/portfolio/post/aes-hackathon-judging"
+    },{
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Apple_Music_logo.svg/1024px-Apple_Music_logo.svg.png",
+      link: "https://anishg2000.wixsite.com/portfolio/post/icon-intuitiveness-study"
+    },
+  ];
+
+  const gallery = document.getElementById("gallery");
+
+  items.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "gallery-item";
+
+    const a = document.createElement("a");
+    a.href = item.link;
+    a.target = "_blank";
+
+    const img = document.createElement("img");
+    img.src = item.image;
+    img.alt = "Gallery Item";
+
+    a.appendChild(img);
+    div.appendChild(a);
+    gallery.appendChild(div);
+  });
+</script>
+
+</body>
+</html>
