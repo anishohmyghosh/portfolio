@@ -5,33 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tilt Logo</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: transparent; /* transparent background */
-      margin: 0;
-    }
-
-    .tilt {
-      width: 250px;
-    }
-
-    .tilt img {
-      width: 100%;
-      display: block;
-      border-radius: 12px;
-      /* shadow for lift effect */
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      transition: box-shadow 0.3s ease;
-    }
-
-    /* stronger shadow on hover to simulate lift */
-    .tilt:hover img {
-      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
-    }
+  <style> 
+    body { display:flex; justify-content:center; align-items:center; height:100vh; margin: 0; background: transparent; } 
+    .tilt { width:250px; } 
+    .tilt img { width:100%; display:block; } 
   </style>
 </head>
 <body>
