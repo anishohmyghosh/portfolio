@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tilt Logo</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+  <style>
+    body { display:flex; justify-content:center; align-items:center; height:100vh; background:#fff; }
+    .tilt { width:250px; }
+    .tilt img { width:100%; display:block; }
+  </style>
+</head>
+<body>
+<div class="tilt" 
+     data-tilt 
+     data-tilt-max="10" 
+     data-tilt-speed="600" 
+     data-tilt-glare="true" 
+     data-tilt-max-glare="0.2"
+     style="width:250px; margin:100px auto;">
+  <img src="https://github.com/anishohmyghosh/portfolio/blob/main/anishghoshlogowhite.png?raw=true" 
+       style="width:100%; display:block; border-radius:12px;">
+</div>
+
+
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".tilt"), {
+      reverse: false,    // true = tilt in opposite direction
+      max: 10,           // smaller = less tilt
+      speed: 600,        // transition speed
+      glare: true,       // adds a subtle light reflection
+      "max-glare": 0.2,  // 0–1, how shiny it gets
+      scale: 1.05        // little zoom on hover
+    });
+  </script>
+</body>
+</html>
