@@ -6,68 +6,33 @@
   <title>Tilt Logo</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
   <style>
-    body {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      margin: 0;
-      background: transparent;
-    }
-    .tilt {
-      width:250px;
-      height:250px; /* optional: ensure it has some height */
-    }
-    .tilt img {
-      width:100%;
-      display:block;
-      border-radius:12px;
-    }
+    body { display:flex; justify-content:center; align-items:center; height:100vh; margin: 0; background: transparent; }
+    .tilt { width:250px; }
+    .tilt img { width:100%; display:block; }
   </style>
 </head>
 <body>
-
-<div class="tilt">
-  <img src="https://i.imgur.com/4WB1ms5.png">
+<div class="tilt" 
+     data-tilt 
+     data-tilt-max="10" 
+     data-tilt-speed="600" 
+     data-tilt-glare="true" 
+     data-tilt-max-glare="0.2"
+     style="width:250px; margin:100px auto;">
+  <img src="https://i.imgur.com/4WB1ms5.png" 
+       style="width:100%; display:block; border-radius:12px;">
 </div>
 
-<script>
-const tiltElement = document.querySelector(".tilt");
 
-// Initialize Vanilla Tilt
-VanillaTilt.init(tiltElement, {
-  reverse: false,
-  max: 10,
-  speed: 600,
-  glare: true,
-  "max-glare": 0.2,
-  scale: 1.05,
-  reset: false   // Keep tilt even when mouse leaves element
-});
-
-// Helper function to map value from one range to another
-function mapRange(value, inMin, inMax, outMin, outMax) {
-  return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
-}
-
-// Listen to mouse movement on the whole document
-document.addEventListener("mousemove", (e) => {
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
-
-  // Calculate percentage position of mouse in viewport
-  const px = e.clientX / vw;
-  const py = e.clientY / vh;
-
-  // Map to tilt angles
-  const tiltX = mapRange(py, 0, 1, -10, 10); // vertical movement tilts around X-axis
-  const tiltY = mapRange(px, 0, 1, -10, 10); // horizontal movement tilts around Y-axis
-
-  // Update Vanilla Tilt values manually
-  tiltElement.vanillaTilt.set(tiltX, tiltY);
-});
-</script>
-
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".tilt"), {
+      reverse: false,    // true = tilt in opposite direction
+      max: 10,           // smaller = less tilt
+      speed: 600,        // transition speed
+      glare: false,       // adds a subtle light reflection
+      "max-glare": 0.2,  // 0–1, how shiny it gets
+      scale: 1.05        // little zoom on hover
+    });
+  </script>
 </body>
 </html>
-
